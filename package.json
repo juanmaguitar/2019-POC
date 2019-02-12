@@ -1,0 +1,19 @@
+{
+  "name": "2019-poc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "git push git@heroku.com:$APP master"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juanmaguitar/2019-POC.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juanmaguitar/2019-POC/issues"
+  },
+  "homepage": "https://github.com/juanmaguitar/2019-POC#readme"
+}
