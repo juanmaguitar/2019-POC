@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "deploy": "git push git@heroku.com:$APP master"
+    "deploy": "git push git@heroku.com:$APP master",
+    "deploy:bot-pr": "git push git@heroku.com:bot2019-pr-friendly-reminder master"
   },
   "repository": {
     "type": "git",
