@@ -1,0 +1,11 @@
+service: openPR-friendlyReminder-lambda
+provider:
+  name: aws
+  region: eu-central-1
+  runtime: nodejs8.10
+functions:
+  launch:
+    handler: handler.launch
+    events:
+    - schedule:
+        rate: cron(30 9 * * ? *)

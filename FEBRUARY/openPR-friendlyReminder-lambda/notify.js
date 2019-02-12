@@ -15,7 +15,7 @@ const getProperMessage = numPRs => {
 }
 var webhook = new IncomingWebhook( WEBHOOK_URL );
 
-;(async () => {
+const notify = async () => {
   const prs = await getPRsRepo()
 
   const msgDefaults = {
@@ -42,4 +42,6 @@ var webhook = new IncomingWebhook( WEBHOOK_URL );
     console.log(`\n🚀  OpenPrFriendlyReminder report delivered 🚀`)
   })
 
-})()
+}
+
+module.exports = notify
