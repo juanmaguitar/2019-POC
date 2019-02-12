@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<title>Sketch Go</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/styles.css">
+<script src="js/touchcanvas.js" defer></script>
+<script src="js/sketch.js" defer></script>
+<script src="js/geolocation.js" defer></script>
+<script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC_UGrSpml9ax6_PPgDMKWtAWgexKKp21s",
+    authDomain: "sketchgo-13b9b.firebaseapp.com",
+    databaseURL: "https://sketchgo-13b9b.firebaseio.com",
+    projectId: "sketchgo-13b9b",
+    storageBucket: "sketchgo-13b9b.appspot.com",
+    messagingSenderId: "40459930790"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<section id="catch">
+    <header>
+        <h1>Catch Sketches around you</h1>
+        <button id="btnPinNew">Pin a new Sketch</button>
+        <p>Walk in your area to find sketches</p>
+    </header>
+    <ul id="sketches">        
+    </ul>
+</section>
+
+<section id="pin">
+    <header>
+        <h1>Pin a new Sketch in the World</h1>
+        <button id="btnPinCancel">Cancel</button><button id="btnPinPost">PIN Sketch at Current Location</button>
+        <p>Draw the sketch on the white area and then pin it in your world</p>
+    </header>
+    <canvas id="c"></canvas>
+</section>
