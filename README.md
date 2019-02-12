@@ -21,7 +21,6 @@ Buildpack added. Next release on bot2019-pr-friendly-reminder will use:
 Run git push heroku master to create a new release using these buildpacks.
 ```
 
-
 ## Deploy
 
 ```
