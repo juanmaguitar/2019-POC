@@ -8,7 +8,7 @@ moment.locale('es');
 const repository = process.env.REPOSITORY
 const urlApiPrsRepo = `https://api.github.com/repos/${repository}/pulls`
 
-const LABEL_FRIENDLY_REMINDER = 'friendly reminderWiP'
+const LABEL_FRIENDLY_REMINDER = 'friendly reminder'
 
 const shouldBeNotified = labels => labels.includes(LABEL_FRIENDLY_REMINDER)
 
@@ -28,7 +28,7 @@ const colorizePR = ({ created, updated }) => {
 const getPRsRepo = async () => {
   const { data: dataPRsRepo } = await axios.get(urlApiPrsRepo)
   
-  const normalizedPRs = dataPRsRepo.map( ({url, title, labels, created_at, updated_at, state,  user: { login, html_url }}) => {
+  const normalizedPRs = dataPRsRepo.map( ({html_url: url, title, labels, created_at, updated_at, state,  user: { login, html_url }}) => {
     const labelNames = labels.map(({name}) => name)
     return { url, title, labels: labelNames, created_at, updated_at, state, user: login, userUrl: html_url }
   })
@@ -36,9 +36,10 @@ const getPRsRepo = async () => {
   const filteredRepos = orderedRepos.filter(({labels}) => shouldBeNotified(labels))
   const reposSlackMessages = filteredRepos.map( ({ url, title, created_at, labels, updated_at, state, user, userUrl}) => {
 
-    const createdTime = moment(created_at).startOf('hour')
-    const updatedTime = moment(updated_at).startOf('hour')
-
+    
+    const createdTime = moment(created_at)
+    const updatedTime = moment(updated_at)
+    
     const createdAgo = createdTime.fromNow()
     const updatedAgo = updatedTime.fromNow()
 
