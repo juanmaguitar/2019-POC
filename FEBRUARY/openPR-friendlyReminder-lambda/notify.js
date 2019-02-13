@@ -25,10 +25,11 @@ const notify = async () => {
     iconEmoji: ICON_EMOJI
   }
 
-  var attachments = prs.map(({ titleMsg, textMsg }) => {
+  var attachments = prs.map(({ titleMsg: title, textMsg: text, color }) => {
     return {
-      title: titleMsg,
-      text: textMsg,
+      title,
+      text,
+      color,
       mrkdwn_in: ['text', 'pretext']
     }
   })
