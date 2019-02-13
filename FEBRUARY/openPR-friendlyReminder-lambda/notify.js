@@ -18,6 +18,8 @@ var webhook = new IncomingWebhook( WEBHOOK_URL );
 const notify = async () => {
   const prs = await getPRsRepo()
 
+  if (!prs.length) return
+  
   const msgDefaults = {
     text: `Buen día! Friendly reminder de que ${getProperMessage(prs.length)}`,
     responseType: 'in_channel',

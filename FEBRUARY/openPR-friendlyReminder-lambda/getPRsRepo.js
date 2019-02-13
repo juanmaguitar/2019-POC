@@ -8,9 +8,9 @@ moment.locale('es');
 const repository = process.env.REPOSITORY
 const urlApiPrsRepo = `https://api.github.com/repos/${repository}/pulls`
 
-const labelsInProgress = ['WiP', 'help wanted', 'invalid', 'not ready to merge', 'WiP UX Validation', 'wontfix']
+const LABEL_FRIENDLY_REMINDER = 'friendly reminderWiP'
 
-const isReadyForReview = labels => !labels.length || !labels.some(label => labelsInProgress.includes(label))
+const shouldBeNotified = labels => labels.includes(LABEL_FRIENDLY_REMINDER)
 
 const isNewComponentPR = labels => labels.includes('new component')
 const isBugPR = labels => labels.includes('bug')
@@ -33,7 +33,7 @@ const getPRsRepo = async () => {
     return { url, title, labels: labelNames, created_at, updated_at, state, user: login, userUrl: html_url }
   })
   const orderedRepos = _.orderBy(normalizedPRs, ['created_at'], ['asc'])
-  const filteredRepos = orderedRepos.filter(({labels}) => isReadyForReview(labels))
+  const filteredRepos = orderedRepos.filter(({labels}) => shouldBeNotified(labels))
   const reposSlackMessages = filteredRepos.map( ({ url, title, created_at, labels, updated_at, state, user, userUrl}) => {
 
     const createdTime = moment(created_at).startOf('hour')
