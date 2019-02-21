@@ -8,4 +8,4 @@ functions:
     handler: handler.launch
     events:
     - schedule:
-        rate: cron(30 9 * * ? *)
+        rate: cron(30 9 ? * 2-6 *)
