@@ -1,36 +1,47 @@
 import React, { Component } from 'react'
 import './index.scss'
 
-import { Sticky, ExampleStuckContent, PlaceholderP } from 'components'
+import { Sticky } from 'components'
 
 class App extends Component {
   render () {
     return (
       <div className="App">
         <div className="App__title">React sticky header</div>
-        <PlaceholderP style={{ height: '100vh' }}>
+        <p style={{ height: '100vh', backgroundColor: 'pink', padding: '20px' }}>
           This content should scroll normally
-        </PlaceholderP>
+        </p>
         <Sticky>
-          <ExampleStuckContent>
+          <div>
             <p>
               This is a stickable component. It will get a prop called
               "modifiers" containing an array of strings like "stuck-top" when
               it's been scrolled out of view.
             </p>
+          </div>
+          {
+            /*
+            <ExampleStuckContent>
           </ExampleStuckContent>
+            */
+          }
+          
         </Sticky>
-        <PlaceholderP style={{ height: '100vh' }} />
+        <p style={{ height: '100vh', backgroundColor: 'pink', padding: '20px' }}>
+          Some more content over here...
+        </p>
         <Sticky sides={{ bottom: 0 }}>
-          <ExampleStuckContent>
+          <div>
             <p>
               This component sticks to the bottom. It will get a prop called
               "modifiers" containing an array of strings like "stuck-top" when
               it's been scrolled out of view.
             </p>
-          </ExampleStuckContent>
+          </div>
         </Sticky>
-        <PlaceholderP style={{ height: '100vh' }} />
+        <p style={{ height: '100vh', backgroundColor: 'pink', padding: '20px' }}>
+          Last text
+        </p>
       </div>
     )
   }

@@ -1,0 +1,45 @@
+.ExampleStuckContent {
+  position: relative;
+  padding: 10px;
+}
+
+.ExampleStuckContent__label {
+  position: absolute;
+  border-radius: 2px;
+  bottom: 5px;
+  right: 5px;
+  background: black;
+  color: white;
+  padding: 5px;
+}
+
+.ExampleStuckContent--stuck-top {
+  /* opacity: .5; */
+  
+  /* transition: .225s ease-out; */
+  /* transition: none; */
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: orange;
+  z-index: 1;
+  animation:slide-down 0.7s;
+  
+}
+.ExampleStuckContent--stuck-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: yellow;
+  z-index: 1;
+  animation:slide-up 0.7s;
+}
+.ExampleStuckContent--stuck-left {
+  outline: 5px solid cyan;
+}
+.ExampleStuckContent--stuck-right {
+  outline: 5px solid salmon;
+}
