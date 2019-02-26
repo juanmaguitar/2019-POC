@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import cx from 'classname'
-import './index.scss'
 
 import { Sticky, StickyProvider } from '../Sticky/'
 
@@ -111,12 +110,14 @@ class App extends Component {
             This content should scroll normally
           </p>
 
+          {/* @end STICKY FIXED FOOTER BOTTOM */}
           <FooterFixedBottom
             className="Demo-header"
             style={{ background: 'black' }}
           >
             <h1>Footer Fixed Botttom</h1>
           </FooterFixedBottom>
+          {/* @end STICKY FIXED FOOTER BOTTOM */}
         </div>
       </StickyProvider>
     )

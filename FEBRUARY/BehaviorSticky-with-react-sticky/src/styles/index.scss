@@ -4,6 +4,10 @@ body {
   font-family: sans-serif;
 }
 
+.App {
+  text-align: center;
+}
+
 @keyframes slide-down {
   0% {
       transform: translateY(-100%);
