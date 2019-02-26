@@ -1,2 +1,3 @@
-export { default as App } from './App/'
-export { default as Sticky } from './Sticky/'
+
+// export { default as App } from './App/'
+// export { StickyProvider, Sticky } from './Sticky/'

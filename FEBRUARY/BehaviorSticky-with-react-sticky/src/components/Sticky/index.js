@@ -1,46 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react'
+import * as ReactSticky from 'react-stickup'
 
-import { Sticky, StickyContainer } from 'react-sticky'
+const BASE_CLASS = `sui-BehaviourSticky`
 
-import './index.scss'
-
-class Header extends Component {
-  render () {
-    const { style } = this.props
-    return (
-      <div style={style}>
-        <h1>My Title</h1>
-      </div>
-    )
-  }
-}
-
-const _Sticky = props => {
-  // const { children, relative, topOffset, bottomOffset } = props
-  // const stickyProps = { relative, topOffset, bottomOffset }
-
+const StickyProvider = ReactSticky.StickyProvider
+const Sticky = (props) => {
   return (
-    <div>
-      <Sticky>{({ style }) => <Header style={style} />}</Sticky>
-      { props.children }
-      { /* <h2 className="text-center">{'<StickyContainer />'}</h2> */}
-    </div>
+    <ReactSticky.Sticky className={BASE_CLASS} {...props}>
+      {props.children}
+    </ReactSticky.Sticky>
   )
 }
 
-export default _Sticky
-
-/*
-      <StickyContainer className="container">
-        <Sticky {...stickyProps}>
-          {stickyProps => {
-            console.log(stickyProps)
-            return (
-              <div style={stickyProps.style}>
-                {children}
-              </div>
-            )
-          }}
-        </Sticky>
-      </StickyContainer>
-      */
+export {
+  Sticky,
+  StickyProvider
+}

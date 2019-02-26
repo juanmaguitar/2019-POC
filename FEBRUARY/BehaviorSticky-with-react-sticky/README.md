@@ -1,28 +1,13 @@
-On `.ExampleStuckContent--stuck-top ` try something like...
+# Proof of concept `BehaviourSticky`
 
-http://www.menucool.com/ui/animated-sticky-header-on-scroll
+This proof of concept shows:
+- The implementation of `HeaderFixedTop` and `FooterFixedBottom` through CSS
+- The use of `react-stickup` providing
+    - `StickyProvider` → general parent which centralize the scroll event management and pass this info to Consumer childrens (`Sticky` components)
+    - `Sticky` → child component w/ sticky behaviour (customized through props) that can be used as a component w/ children or children as function
+- The possible combinations of different sticky behavious on the same page
 
-```
-/* Float Panel: class="float-panel fixed" */
+## Resources
 
-.fixed {
-    box-shadow:0 2px 6px rgba(0,0,0,0.2);  
-    padding:4px 0;
-    animation:slide-down 0.7s;
-    opacity:0.9;    
-}                  
-.fixed .fa-gg {                  
-    transform: rotate(360deg);      
-}
-
-@keyframes slide-down {
-    0% {
-        opacity: 0;
-        transform: translateY(-100%);
-    } 
-    100% {
-        opacity: 0.9;
-        transform: translateY(0);
-    } 
-}
-```
+- [`react-stickup`](https://github.com/garthenweb/react-stickup/) which internally uses [`react-viewport-utils`](https://github.com/garthenweb/react-viewport-utils)
+- [How to create an animated sticky header after some scrolling](http://www.menucool.com/ui/animated-sticky-header-on-scroll)
