@@ -5,6 +5,4 @@ import App from './components/App/'
 
 import './styles/index.scss'
 
-alert("render!")
-
 ReactDOM.render(<App />, document.getElementById('root'))
