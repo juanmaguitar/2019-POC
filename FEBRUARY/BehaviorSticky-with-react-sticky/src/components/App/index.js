@@ -1,10 +1,44 @@
 import React, { Component } from 'react'
 import cx from 'classname'
 
+import hocIntersectionObserver from '@s-ui/hoc/lib/withIntersectionObserver'
+
 import { Sticky, StickyProvider } from '../Sticky/'
 
 import { Header, HeaderFixedTop } from '../Header/'
 import { FooterFixedBottom } from '../Footer/'
+
+const HeaderSticky = ({ container, isVisible }) =>
+  isVisible && (
+    <div ref={container} style={{ height: '500px' }}>
+      <Sticky
+        container={container}
+        defaultOffsetTop={170}
+        style={{ zIndex: 50 }}
+      >
+        {({ isSticky }) => (
+          <Header
+            className={cx('Demo-header', { isSticky })}
+            style={{ background: 'green' }}
+          >
+            <h1>Header!</h1>
+          </Header>
+        )}
+      </Sticky>
+    </div>
+  )
+
+const LazyHeaderSticky = hocIntersectionObserver(
+  ({ container, isVisible, innerRef }) => {
+    isVisible && console.log('displaying Element!!!')
+    console.log(isVisible)
+    return (
+      <div ref={innerRef}>
+        <HeaderSticky container={container} isVisible={isVisible} />
+      </div>
+    )
+  }
+)
 
 class App extends Component {
   containerGreen = React.createRef()
@@ -42,22 +76,9 @@ class App extends Component {
           </p>
 
           {/* @begin STICKY IN CONTAINER */}
-          <div ref={this.containerGreen} style={{ height: '500px' }}>
-            <Sticky
-              container={this.containerGreen}
-              defaultOffsetTop={170}
-              style={{ zIndex: 50 }}
-            >
-              {({ isSticky }) => (
-                <Header
-                  className={cx('Demo-header', { isSticky })}
-                  style={{ background: 'green' }}
-                >
-                  <h1>Header!</h1>
-                </Header>
-              )}
-            </Sticky>
-          </div>
+
+          <LazyHeaderSticky container={this.containerGreen} />
+
           {/* @end STICKY IN CONTAINER  */}
 
           <p className="Demo-placeholder">
