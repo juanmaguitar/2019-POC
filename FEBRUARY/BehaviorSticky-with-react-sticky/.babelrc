@@ -3,8 +3,11 @@
     [
       "@babel/preset-env",
       {
+        "useBuiltIns": "usage",
         "targets": {
-          "browsers": ["last 2 Chrome versions"],
+          "browsers": [
+            "ie >= 11"
+          ],
           "esmodules": true
         }
       }
