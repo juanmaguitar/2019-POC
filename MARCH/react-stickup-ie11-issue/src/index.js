@@ -7,6 +7,7 @@ import { StickyProvider, Sticky } from "react-stickup"; // eslint-disable-line
 
 const container1 = React.createRef();
 const container2 = React.createRef();
+const containerBrown = React.createRef();
 
 const Header = ({ style }) => (
   <h1 style={{ margin: 0, padding: "10px", color: "white", ...style }}>
@@ -34,6 +35,38 @@ function App() {
           hac cras interdum nostra.
         </div>
       </div>
+      {/* @begin STICKY IN CONTAINER */}
+      <div ref={containerBrown} style={{ height: '500px' }}>
+        <Sticky
+          container={containerBrown}
+          style={{ zIndex: 50 }}
+        >
+          {({ isSticky }) => (
+            <Header
+              style={{ 
+                'textDecoration': isSticky ? 'line-through' : 'none', 
+                'color': isSticky ? 'black' : 'white', 
+                background: isSticky ? 'white' : 'brown', 
+                border: isSticky ? '2px solid black' : '', 
+              }}
+            >
+              <h1>Header!<small>children as function</small></h1>
+            </Header>
+          )}
+        </Sticky>
+        <div style={{ height: "1000px", background: "yellow" }}>
+          Tempus scelerisque mauris in iaculis metus ridiculus mi nibh augue,
+          purus malesuada dis aenean pellentesque diam magnis primis eu erat,
+          enim luctus nullam turpis ac molestie taciti vitae. Dui primis
+          pharetra cras erat habitasse ut urna congue molestie, maecenas
+          placerat leo orci morbi ullamcorper potenti sagittis, mus fusce
+          parturient lobortis tempus volutpat ultricies libero. Quisque
+          consequat phasellus sodales pretium fames bibendum, cubilia fusce
+          tellus purus ligula odio sociosqu, aliquet vel dignissim potenti
+          laoreet.
+        </div>
+      </div>
+     {/* @end STICKY IN CONTAINER  */}
       <div ref={container2}>
         <Sticky container={container2}>
           <Header style={{ background: "red" }}>My Header</Header>
