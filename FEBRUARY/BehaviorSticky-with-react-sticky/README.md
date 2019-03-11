@@ -1,5 +1,7 @@
 # Proof of concept `BehaviourSticky`
 
+TO-DO: Add Use Case of LazyRendering using Intersection Observer to check if 
+
 🌍 Demo Online → https://build-cxkssafkos.now.sh/
 
 This proof of concept shows:
