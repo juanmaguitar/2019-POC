@@ -1,0 +1,73 @@
+$bgc-atom-input-disabled: $c-gray-lightest !default;
+$c-atom-input-placeholder: $c-gray-dark !default;
+$m-atom-input-type-left: $m-m !default;
+$m-atom-input-type-right: $m-m !default;
+$bdrs-atom-input: $bdrs-none !default;
+
+$base-class: '.sui-AtomInput-input';
+$class-read-only: '#{$base-class}--readOnly';
+
+#{$base-class} {
+  @extend %sui-atom-input-input;
+  border-radius: $bdrs-atom-input;
+  min-height: auto;
+  
+  &--size {
+    width: inherit;
+  }
+
+  &--hidden {
+    display: none;
+  }
+
+  &#{$base-class}--noBorder {
+    border: 0;
+
+    &:focus {
+      border: 0;
+      box-shadow: none;
+      outline: 0;
+    }
+  }
+
+  &::placeholder {
+    color: $c-atom-input-placeholder;
+  }
+
+  &:disabled {
+    &:not(#{$class-read-only}) {
+      background: $bgc-atom-input-disabled;
+    }
+  }
+
+  &:focus {
+    @extend %sui-atom-input-input-focus;
+  }
+
+  &[type='radio'],
+  &[type='checkbox'] {
+    height: inherit;
+    margin-left: $m-atom-input-type-left;
+    margin-right: $m-atom-input-type-right;
+    width: inherit;
+
+    &:focus {
+      border: 0;
+      box-shadow: none;
+      outline: 0 none;
+    }
+  }
+
+  @each $type, $attr in $sizes-atom-input {
+    &-#{$type} {
+      height: $attr;
+      min-height: $attr;
+    }
+  }
+
+  @each $state, $color in $states-atom-input {
+    &.sui-AtomInput-input--#{$state} {
+      border-color: $color;
+    }
+  }
+}

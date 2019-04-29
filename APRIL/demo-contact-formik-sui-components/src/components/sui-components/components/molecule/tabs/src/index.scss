@@ -1,0 +1,235 @@
+@import "~@schibstedspain/sui-theme/lib/index";
+
+$bdc-sui-molecule-tabs: color-variation($c-gray, 3) !default;
+$bdw-sui-molecule-tabs: $p-s !default;
+$c-sui-molecule-tabs: color-variation($c-gray, 1) !default;
+
+.sui-MoleculeTabs {
+
+  svg {
+    width: 100%; 
+    height: 100%; 
+  }
+
+  &-scroller {
+    @include reset-list;
+    align-items: flex-start;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+
+  &--classic.sui-MoleculeTabs--horizontal,
+  &--classic.sui-MoleculeTabs--fullWidth {
+    .sui-MoleculeTabs-item {
+      border: 1px solid transparent;
+      border-bottom-color: $bdc-sui-molecule-tabs;
+      display: flex;
+      flex-direction: column;
+
+      &.is-active {
+        border-bottom: 0;
+        border-color: $bdc-sui-molecule-tabs;
+        color: $c-primary;
+        margin-top: 1px;
+
+        span {
+          transform: translateY(-1px);
+        }
+
+        svg,
+        path {
+          fill: $c-primary;
+        }
+      }
+
+      &:hover:not(.is-disabled) {
+        color: $c-primary;
+        cursor: pointer;
+
+        svg,
+        path {
+          fill: $c-primary;
+        }
+      }
+    }
+  }
+
+  &--classic.sui-MoleculeTabs--vertical {
+    .sui-MoleculeTabs-item {
+      border: 1px solid transparent;
+      border-right-color: $bdc-sui-molecule-tabs;
+
+      &.is-active {
+        border-color: $bdc-sui-molecule-tabs;
+        border-right-color: transparent;
+        color: $c-primary;
+
+        svg,
+        path {
+          fill: $c-primary;
+        }
+      }
+
+      &:hover:not(.is-disabled) {
+        color: $c-primary;
+        cursor: pointer;
+
+        svg,
+        path {
+          fill: $c-primary;
+        }
+      }
+    }
+  }
+
+  &--highlighted.sui-MoleculeTabs--horizontal,
+  &--highlighted.sui-MoleculeTabs--fullWidth {
+    border-bottom: 1px solid $bdc-sui-molecule-tabs;
+
+    .sui-MoleculeTabs-item {
+      border: 0 none transparent;
+      border-bottom: $bdw-sui-molecule-tabs solid transparent;
+
+      &.is-active {
+        border-bottom-color: $c-primary;
+        color: $c-primary;
+
+        svg,
+        path {
+          fill: $c-primary;
+        }
+      }
+
+      &:hover:not(.is-disabled) {
+        color: $c-primary;
+        cursor: pointer;
+
+        svg,
+        path {
+          fill: $c-primary;
+        }
+      }
+    }
+  }
+
+  &--highlighted.sui-MoleculeTabs--vertical {
+    border-right: 1px solid $bdc-sui-molecule-tabs;
+
+    .sui-MoleculeTabs-item {
+      border: 0 none transparent;
+      border-right: $bdw-sui-molecule-tabs solid transparent;
+      cursor: pointer;
+
+      &.is-active {
+        border-right-color: $c-primary;
+        color: $c-primary;
+
+        svg,
+        path {
+          fill: $c-primary;
+        }
+      }
+
+      &:hover:not(.is-disabled) {
+        color: $c-primary;
+        cursor: pointer;
+
+        svg,
+        path {
+          fill: $c-primary;
+        }
+      }
+    }
+  }
+
+  &--horizontal,
+  &--fullWidth {
+    .sui-MoleculeTabs-scroller {
+      max-width: 100%;
+      overflow-x: auto;
+      white-space: nowrap;
+      width: fit-content;
+
+      &::-webkit-scrollbar {
+        -webkit-appearance: none;
+      }
+    }
+  }
+
+  &--vertical {
+    display: flex; 
+    align-items: flex-start;
+
+    .sui-MoleculeTabs-scroller {
+      flex-direction: column;
+    }
+
+    .sui-MoleculeTabs-content {
+      margin-left: 20px;
+    }
+
+    .sui-MoleculeTabs-item {
+      text-align: center;
+      width: 100%;
+
+      &.is-disabled {
+        cursor: no-drop;
+      }
+    }
+
+  }
+
+  &--fullWidth {
+    display: block;
+
+    .sui-MoleculeTabs-scroller {
+      display: flex;
+      min-width: 100%;
+    }
+  }
+
+  &-item {
+    align-items: center;
+    flex: 1 1 auto;
+
+    &-icon {
+      display: flex;
+      height: $sz-icon-l;
+      justify-content: center;
+      margin: 0 auto $m-s;
+      vertical-align: middle;
+      width: $sz-icon-l;
+    }
+  }
+
+  &-item {
+    @include reset-link;
+    background: transparent;
+    color: $c-sui-molecule-tabs;
+    font-size: $fz-m;
+    outline: 0 none;
+    padding: $p-m $p-l;
+    text-decoration: none;
+    white-space: nowrap;
+    width: 100%;
+
+    svg,
+    path {
+      fill: $c-sui-molecule-tabs;
+    }
+
+    &.is-disabled {
+      color: $c-gray-lightest;
+      cursor: no-drop;
+
+      svg,
+      path {
+        fill: $c-gray-lightest;
+      }
+    }
+  }
+}
+
+@import "mobile";
