@@ -1,3 +1,3 @@
-# Demo Login Form w/ Formik & sui-components
+# Demo Contact Form w/ Formik & sui-components
 
-https://demo-login-formik-sui-components.now.sh
+https://demo-contact-formik-sui-components.now.sh
