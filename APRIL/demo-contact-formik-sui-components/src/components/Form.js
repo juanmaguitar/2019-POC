@@ -4,7 +4,7 @@ import React from 'react'
 import {withFormik, Field} from 'formik'
 import * as Yup from 'yup'
 
-import MoleculeTextareaField from './sui-components/components/molecule/textareaField/src'
+import MoleculeTextareaField from '@s-ui/react-molecule-textarea-field'
 import AtomTextarea from '@s-ui/react-atom-textarea'
 
 import MoleculeInputField from '@s-ui/react-molecule-input-field'
@@ -39,7 +39,7 @@ const Form = ({
           successText={
             touched.name && !errors.name && 'Everything OK with this name'
           }
-          onChange={(ev, {value}) => handleChange(ev)}
+          onChange={handleChange}
         />
           
       </div>
@@ -55,7 +55,7 @@ const Form = ({
           successText={
             touched.email && !errors.email && 'Everything OK with this email'
           }
-          onChange={(ev, {value}) => handleChange(ev)}
+          onChange={handleChange}
         />
 
       </div>
@@ -76,27 +76,8 @@ const Form = ({
             'Everything OK with this message'
           }
           placeholder="Message"
-          onChange={ ev => {
-            console.log(ev)
-            handleChange(ev)
-          }}
+          onChange={ handleChange }
         />
-
-       
-
-        {
-          /*
-          <Textarea
-            placeholder="MoleculeTextarea Message..."
-            onChange={(ev, {value}) => {
-              ev.persist()
-              console.log(ev, {value})
-              handleChange(ev)}
-            }
-          />
-          */
-        }
-
 
       </div>
     </div>
